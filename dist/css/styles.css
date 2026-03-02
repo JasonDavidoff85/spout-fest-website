@@ -3,8 +3,9 @@ body {
 	display: flex;
 	flex-direction: column;
   margin: 0;
-  height: 100vh;
-  overflow: hidden; /* no scrolling */
+  /* height: 100vh; */
+  height: 400vh; /* gives scroll space */
+  /* overflow: hidden; */
 }
 @font-face {
 	font-family: 'SpoutFont';
@@ -18,23 +19,60 @@ h2 {
 	font-size: 2em;
 	margin: 0px;
 	text-align: center;
+  position: fixed;
+  top: 65%;
+  left: 40%;
 }
 
-h2 {
-    text-align: center;
-}
 
 .content {
-  position: relative;
+  /* position: relative; */
   z-index: 2;
   height: 100vh;
   display: flex;
+  position: fixed;
+  inset: 0;
 }
 
 .spoutfest-svg {
-    text-align: center;
-    z-index: 2;
+  height: 20rem;
+  width: 40rem;
+  text-align: center;
+  z-index: 2;
+  position: fixed;
+  top: 40%;
+  left: 30%;
 }
+
+.spoutfest-svg {
+  height: 25rem;
+  width: 35rem;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 480px) {
+  .spoutfest-svg {
+    height: 8rem;
+    width: 16rem;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  h2 {
+    font-family: 'SpoutFont', Arial, sans-serif;
+    font-size: 2em;
+    margin: 0px;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 15%;
+}
+}
+
+
 
 html {
   background-color: #5bac54;
@@ -47,19 +85,22 @@ html {
   perspective: 1000px; /* gives depth */
   margin-top: 20px;
   margin-bottom: 0px;
+  position: fixed;
+  left: 40%;
 }
 
 .carousel {
   width: 100%;
   height: 100%;
-  position: relative;
+  position: absolute;
   transform-style: preserve-3d;
   animation: rotate 20s linear infinite;
+  /* animation-timeline: scroll(); */
 }
 
 .carousel img {
   position: absolute;
-  width: 200px;
+  width: 20rem;
   left: 50%;
   top: 10%;
   transform-origin: center center;

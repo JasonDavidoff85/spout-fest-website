@@ -2,18 +2,20 @@ body {
 	min-height: 98vh;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+  margin: 0;
+  height: 100vh;
+  overflow: hidden; /* no scrolling */
 }
 @font-face {
-	font-family: 'TitleFont';
-	src: url('../static/fonts/title.otf') format('opentype');
+	font-family: 'SpoutFont';
+	src: url('../static/fonts/ClassicaCrastao.otf') format('opentype');
 	font-weight: normal;
 	font-style: normal;
 }
 
-h1.title {
-	font-family: 'TitleFont', Arial, sans-serif;
-	font-size: 10em;
+h2 {
+	font-family: 'SpoutFont', Arial, sans-serif;
+	font-size: 2em;
 	margin: 0px;
 	text-align: center;
 }
@@ -22,32 +24,66 @@ h2 {
     text-align: center;
 }
 
-html {
-  --s: 140px; /* control the size */
-  --c1: #AB3E5B;
-  --c2: #FFBE40;
-  
-  --_g: 
-    #0000 25%,#0008 47%,var(--c1)  53% 147%,var(--c2) 153% 247%,
-    var(--c1) 253% 347%,var(--c2) 353% 447%,var(--c1) 453% 547%,#0008 553%,#0000 575%;
-  --_s: calc(25%/3) calc(25%/4) at 50%; 
-  background:
-    radial-gradient(var(--_s) 100%,var(--_g)),
-    radial-gradient(var(--_s) 100%,var(--_g)) calc(var(--s)/2) calc(3*var(--s)/4),
-    radial-gradient(var(--_s) 0   ,var(--_g)) calc(var(--s)/2) 0,
-    radial-gradient(var(--_s) 0   ,var(--_g)) 0                calc(3*var(--s)/4),
-    repeating-linear-gradient(90deg,#ACCEC0 calc(25%/-6) calc(25%/6),#61A6AB 0 calc(25%/2));
-  background-size: var(--s) calc(3*var(--s)/2);
-  animation: m 2.5s infinite linear;
-} 
+.content {
+  position: relative;
+  z-index: 2;
+  height: 100vh;
+  display: flex;
+}
 
-@keyframes m {
-  to {
-    background-position:
-      var(--s) 0,
-      calc(var(--s)/-2) calc(3*var(--s)/4),
-      calc(3*var(--s)/2) 0,
-      calc(-1*var(--s)) calc(3*var(--s)/4),
-      0 0
-  }
+.spoutfest-svg {
+    text-align: center;
+    z-index: 2;
+}
+
+html {
+  background-color: #5bac54;
+}
+
+.dancers {
+  width: 290px;
+  height: 290px;
+  margin: 100px auto;
+  perspective: 1000px; /* gives depth */
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
+.carousel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotate 20s linear infinite;
+}
+
+.carousel img {
+  position: absolute;
+  width: 200px;
+  left: 50%;
+  top: 10%;
+  transform-origin: center center;
+}
+
+/* Position each image in 3D space */
+.carousel img:nth-child(1) {
+  transform: rotateY(0deg) translateZ(250px);
+}
+.carousel img:nth-child(2) {
+  transform: rotateY(72deg) translateZ(250px);
+}
+.carousel img:nth-child(3) {
+  transform: rotateY(144deg) translateZ(250px);
+}
+.carousel img:nth-child(4) {
+  transform: rotateY(216deg) translateZ(250px);
+}
+.carousel img:nth-child(5) {
+  transform: rotateY(288deg) translateZ(250px);
+}
+
+/* Spin the whole circle */
+@keyframes rotate {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
 }
